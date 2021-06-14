@@ -1,0 +1,124 @@
+const game = () => {
+    
+    // Assinging The Variables
+    const computerChoices = ['rock', 'paper', 'scissors']
+    let playerChoice = ''
+
+    const startScreen = document.getElementById('start-screen')
+    const playBtn = document.getElementById('play-button')
+    
+    let pPoints = 0
+    let cPoints = 0
+
+    const gameplayScreen = document.getElementById('gameplay-screen')
+    let playerPoints = document.getElementById('player-points')
+    let computerPoints = document.getElementById('computer-points')
+    const rock = document.getElementById('rock')
+    const paper = document.getElementById('paper')
+    const scissors = document.getElementById('scissors')
+    const playerHand = document.getElementById('player-hand')
+    const computerHand = document.getElementById('computer-hand')
+    const winnerText = document.getElementById('winner-text')
+    
+    // Make The Gameplay Screens Disappear
+
+    gameplayScreen.classList.add('disappear')
+
+    // Making The Play Btn Work
+    
+    playBtn.addEventListener('click', () => {
+        playerPoints.textContent = 0
+        computerPoints.textContent = 0
+        startScreen.classList.add('disappear')
+        gameplayScreen.classList.remove('disappear')
+        gameplayScreen.classList.add('appear')
+    })
+
+    // Make The Options Buttons Work
+
+    rock.addEventListener('click', () => {
+        playerChoice = 'rock'
+        playerHand.classList.add('move-player')
+        computerHand.classList.add('move-computer')
+        playerHand.src = `/Rock Paper Scissors/rock.png`
+        computerHand.src = `/Rock Paper Scissors/rock.png`
+        setTimeout(() => {
+            const computerNumber = Math.floor(Math.random() * 3)
+            computerChoice = computerChoices[computerNumber]
+            computerHand.src = `/Rock Paper Scissors/${computerChoice}.png`
+            playerHand.src = `/Rock Paper Scissors/rock.png`
+            if(computerChoice === playerChoice) {
+                winnerText.textContent = `It's A Tie!`
+            } else if (computerChoice === 'paper') {
+                winnerText.textContent = 'You Lost!'
+                cPoints++
+                computerPoints.textContent = cPoints
+            } else {
+                winnerText.textContent = `You Won!`
+                pPoints++
+                playerPoints.textContent = pPoints
+            }
+            playerHand.classList.remove('move-player')
+            computerHand.classList.remove('move-computer')
+        }, 2000)
+    })
+    
+    paper.addEventListener('click', () => {
+        playerChoice = 'paper'
+        playerHand.classList.add('move-player')
+        computerHand.classList.add('move-computer')
+        playerHand.src = `/Rock Paper Scissors/rock.png`
+        computerHand.src = `/Rock Paper Scissors/rock.png`
+        setTimeout(() => {
+            const computerNumber = Math.floor(Math.random() * 3)
+            computerChoice = computerChoices[computerNumber]
+            computerHand.src = `/Rock Paper Scissors/${computerChoice}.png`
+            playerHand.src = `/Rock Paper Scissors/paper.png`
+            if(computerChoice === playerChoice) {
+                winnerText.textContent = `It's A Tie!`
+            } else if (computerChoice === 'scissors') {
+                winnerText.textContent = 'You Lost!'
+                cPoints++
+                computerPoints.textContent = cPoints
+            } else {
+                winnerText.textContent = `You Won!`
+                pPoints++
+                playerPoints.textContent = pPoints
+            }
+            playerHand.classList.remove('move-player')
+            computerHand.classList.remove('move-computer')
+        }, 2000)
+    })
+
+    scissors.addEventListener('click', () => {
+        playerChoice = 'scissors'
+        playerHand.classList.add('move-player')
+        computerHand.classList.add('move-computer')
+        playerHand.src = `/Rock Paper Scissors/rock.png`
+        computerHand.src = `/Rock Paper Scissors/rock.png`
+        setTimeout(() => {
+            const computerNumber = Math.floor(Math.random() * 3)
+            computerChoice = computerChoices[computerNumber]
+            computerHand.src = `/Rock Paper Scissors/${computerChoice}.png`
+            playerHand.src = `/Rock Paper Scissors/scissors.png`
+            if(computerChoice === playerChoice) {
+                winnerText.textContent = `It's A Tie!`
+            } else if (computerChoice === 'rock') {
+                winnerText.textContent = 'You Lost!'
+                cPoints++
+                computerPoints.textContent = cPoints
+            } else {
+                winnerText.textContent = `You Won!`
+                pPoints++
+                playerPoints.textContent = pPoints
+            }
+            playerHand.classList.remove('move-player')
+            computerHand.classList.remove('move-computer')
+        }, 2000)
+    })
+
+}
+
+// Call The Required Functions
+
+game()
